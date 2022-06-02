@@ -10,11 +10,11 @@ const string o_acento=ascii_to_character(243);
 const string exclamacion=ascii_to_character(161);
 const string e_acento=ascii_to_character(233);
 const string u_acento=ascii_to_character(250);
-const double version=1.6;
+const string version="1.6.1";
 uint8 srd;
 uint modo=0;
 const string instrucciones_rapidas="Presiona C para acceder al modo calculadora, T para acceder al modo temporizador, B para acceder al modo tabla de efectividad de batalla, W para leer los cr"+e_acento+"ditos y H si deseas repetir las instrucciones de esta ayuda. Puedes presionar alt F4 para cerrar la herramienta en cualquier momento, o escape para regresar a esta pantalla desde cualquier sub-herramienta. Tambi"+e_acento+"n puedes cerrar la herramienta presionando escape aqu"+i_acento+".";
-const string creditos="Versi"+o_acento+"n "+version+". El Crazy Party Toolkit fue hecho por Ulises Monge. Parte del c"+o_acento+"digo de la calculadora es gracias a Metalalchemist. Gracias a mis amigos el detective, Juli"+a_acento+"n, Samuel, Fernanda, Samantha y Cristal. Tambi"+e_acento+"n gracias a los primeros betatesters de la herramienta, Cristina, Ariel y Miguel. Crazy Party Toolkit no fue hecho con el consentimiento de Pragma, y queda bajo la responsabilidad de cada usuario su uso.";
+const string creditos="Versi"+o_acento+"n "+version+". El Crazy Party Toolkit fue hecho por Ulises Monge. Parte del c"+o_acento+"digo de la calculadora es gracias a Metalalchemist. El script para detectar lector de pantalla fue obtenido de forma gratuita de una librer"+i_acento+"a. Gracias a mis amigos el detective, Juli"+a_acento+"n, Samuel, Fernanda, Samantha y Cristal. Tambi"+e_acento+"n gracias a los primeros betatesters de la herramienta, Cristina, Ariel y Miguel. Crazy Party Toolkit no fue hecho con el consentimiento de Pragma, y queda bajo la responsabilidad de cada usuario su uso.";
 void herramienta()
 {
 show_game_window(programa);
