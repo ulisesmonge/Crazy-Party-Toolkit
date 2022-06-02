@@ -1,5 +1,5 @@
 # Crazy-Party-Toolkit
 Esta herramienta se realizó entre 2020 y 2021 y a recivido algunas pequeñas actualizaciones hasta 2022. E tomado la decisión de liberar el código al público para mejorarla pero también hacer al desarrollador del audiojuego Crazy Party saber de las vulnerabilidades en este para evitar este tipo de jugadores, que lo puedan utilizar solo por gusto. Un agradecimiento a todos los testers que están en los créditos del programa.
-#Descargar
+# Descargar
 Si deseas descargar la última versión oficial compilada (Solo para Windows), la 1.6 en este momento, puedes hacerlo en http://ulisesm.com/toolkit.zip
 Esta se actualizará cuando haya cambios mayores, por lo que para soluciones por el momento clonar el repocitorio y compilarlo con BGT (Incluído en el repo). Cabe destacar de igual forma que BGT solo se ejecuta en sistemas Windows.
