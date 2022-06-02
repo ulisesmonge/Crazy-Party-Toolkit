@@ -1,1 +1,2 @@
 # Crazy-Party-Toolkit
+Esta herramienta se realizó entre 2020 y 2021 y a recivido algunas pequeñas actualizaciones hasta 2022. E tomado la decisión de liberar el código al público para mejorarla pero también hacer al desarrollador del audiojuego Crazy Party las vulnerabilidades en este para evitar este tipo de jugadores, que lo puedan utilizar solo por gusto. Un agradecimiento a todos los testers que están en los créditos del programa.
