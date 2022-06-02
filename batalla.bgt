@@ -1,0 +1,468 @@
+const string tipo_normal="Normal es s"+u_acento+"per efectivo ante Ninguno, poco efectivo a Roca y Acero, pr"+a_acento+"cticamente no afecta a Fantasma, resistente a Ninguno, d"+e_acento+"bil a Lucha, pr"+a_acento+"cticamente inmune a Fantasma.";
+const string tipo_lucha="Lucha es s"+u_acento+"per efectivo ante Normal, Roca, Hielo, Acero y Siniestro, poco efectivo a Bicho, Volador, Veneno, Ps"+i_acento+"quico y Hada, pr"+a_acento+"cticamente no afecta a Fantasma, resistente a Roca, Bicho y Siniestro, d"+e_acento+"bil a Volador, Ps"+i_acento+"quico, Hada, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_volador="Volador es s"+u_acento+"per efectivo ante Planta, Lucha y Bicho, poco efectivo a El"+e_acento+"ctrico, Acero y Roca, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Lucha, Bicho y Planta, d"+e_acento+"bil a Roca, El"+e_acento+"ctrico y Hielo, pr"+a_acento+"cticamente inmune a Tierra.";
+const string tipo_veneno="Veneno es s"+u_acento+"per efectivo ante Planta y Hada, poco efectivo a Veneno, Roca, Tierra y Fantasma, pr"+a_acento+"cticamente no afecta a Acero, resistente a Lucha, Veneno, Bicho, Planta y Hada, d"+e_acento+"bil a Tierra, Ps"+i_acento+"quico, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_tierra="Tierra es s"+u_acento+"per efectivo ante El"+e_acento+"ctrico, Acero, Veneno, Fuego y Roca, poco efectivo a Bicho y Planta, pr"+a_acento+"cticamente no afecta a Volador, resistente a Veneno y Roca, d"+e_acento+"bil a Planta, Agua y Hielo, pr"+a_acento+"cticamente inmune a El"+e_acento+"ctrico.";
+const string tipo_roca="Roca es s"+u_acento+"per efectivo ante Fuego, Volador, Hielo y Bicho, poco efectivo a Tierra, Acero y Lucha, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Normal, Volador, Veneno y Fuego, d"+e_acento+"bil a Lucha, Tierra, Acero, Planta y Agua, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_bicho="Bicho es s"+u_acento+"per efectivo ante Planta, Ps"+i_acento+"quico y Siniestro, poco efectivo a Acero, Lucha, Hada, Fuego, Veneno, Fantasma y Volador, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Lucha, Tierra y Planta, d"+e_acento+"bil a Volador, Roca y Fuego, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_fantasma="Fantasma es s"+u_acento+"per efectivo ante Fantasma y Ps"+i_acento+"quico, poco efectivo a Siniestro, pr"+a_acento+"cticamente no afecta a Normal, resistente a Veneno y Bicho, d"+e_acento+"bil a Fantasma y Siniestro, pr"+a_acento+"cticamente inmune a Normal y Lucha.";
+const string tipo_acero="Acero es s"+u_acento+"per efectivo ante Hielo, Roca y Hada, poco efectivo a Fuego, el"+e_acento+"ctrico, Acero y Agua, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Normal, Volador, Roca, Bicho, Acero, Planta, Ps"+i_acento+"quico, Hielo, Drag"+o_acento+"n y Hada, d"+e_acento+"bil a Lucha, Tierra y Fuego, pr"+a_acento+"cticamente inmune a Veneno.";
+const string tipo_planta="Planta es s"+u_acento+"per efectivo ante Agua, Roca y Tierra, poco efectivo a Fuego, Planta, Acero, Drag"+o_acento+"n, Volador, Bicho y Veneno, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Tierra, Planta, Agua y El"+e_acento+"ctrico, d"+e_acento+"bil a Volador, Veneno, Bicho, Fuego y Hielo, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_fuego="Fuego es s"+u_acento+"per efectivo ante Planta, Acero, Bicho y Hielo, poco efectivo a Fuego, Agua, Roca y Drag"+o_acento+"n, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Bicho, Acero, Planta, Fuego, Hielo y Hada, d"+e_acento+"bil a Tierra, Roca y Agua, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_agua="Agua es s"+u_acento+"per efectivo ante Fuego, Roca y Tierra, poco efectivo a Agua, Planta y Drag"+o_acento+"n, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Acero, Fuego, Agua y Hielo, d"+e_acento+"bil a Planta y El"+e_acento+"ctrico, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_electrico="El"+e_acento+"ctrico es s"+u_acento+"per efectivo ante Agua y Volador, poco efectivo a Planta, El"+e_acento+"ctrico, Drag"+o_acento+"n, pr"+a_acento+"cticamente no afecta a Tierra, resistente a Volador, Acero y El"+e_acento+"ctrico, d"+e_acento+"bil a Tierra, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_psiquico="Ps"+i_acento+"quico es s"+u_acento+"per efectivo ante Lucha y Veneno, poco efectivo a Ps"+i_acento+"quico y Acero, pr"+a_acento+"cticamente no afecta a Siniestro, resistente a Lucha y Ps"+i_acento+"quico, d"+e_acento+"bil a Bicho, Fantasma y Siniestro, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_hielo="Hielo es s"+u_acento+"per efectivo ante Tierra, Volador, Planta y Drag"+o_acento+"n, poco efectivo a Acero, Fuego, Agua y Hielo, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Hielo, d"+e_acento+"bil a Lucha, Roca, Acero y Fuego, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_dragon="Drag"+o_acento+"n es s"+u_acento+"per efectivo ante Drag"+o_acento+"n, poco efectivo a Acero, pr"+a_acento+"cticamente no afecta a Hada, resistente a Planta, Fuego, Agua y El"+e_acento+"ctrico, d"+e_acento+"bil a Hielo, Drag"+o_acento+"n y Hada, pr"+a_acento+"cticamente inmune a Ninguno.";
+const string tipo_siniestro="Siniestro es s"+u_acento+"per efectivo ante Ps"+i_acento+"quico y Fantasma, poco efectivo a Lucha, Siniestro y Hada, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Fantasma y Siniestro, d"+e_acento+"bil a Lucha, Bicho y Hada, pr"+a_acento+"cticamente inmune a Ps"+i_acento+"quico.";
+const string tipo_hada="Hada es s"+u_acento+"per efectivo ante Drag"+o_acento+"n, Lucha y Siniestro, poco efectivo a Fuego, Veneno y Acero, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Lucha, Bicho y Siniestro, d"+e_acento+"bil a Veneno y Acero, pr"+a_acento+"cticamente inmune a Drag"+o_acento+"n.";
+bool normal=false, lucha=false, volador=false, veneno=false, tierra=false, roca=false, bicho=false, fantasma=false, acero=false, planta=false, fuego=false, agua=false, electrico=false, psiquico=false, hielo=false, dragon=false, siniestro=false, hada=false;
+string cartas;
+void tipos_de_batalla()
+{
+show_game_window("Tabla de efectividad de tipos - "+programa+" ");
+while(modo==3)
+{
+if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
+{
+exit();
+}
+if(key_pressed(KEY_ESCAPE))
+{
+modo=0;
+herramienta();
+}
+cartas=clipboard_read_text();
+if(string_contains(cartas, "puntos de vida y ", 1)>0 || string_contains(cartas, "tipo actual es", 1)>0 || string_contains(cartas, "puntos de vida ,", 0)>0)
+{
+screen_reader_speak(srd, "Tipo principal.");
+if(string_contains(cartas, "Normal \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Normal", 1)>0 || string_contains(cartas, ", \"Normal", 1)>0)
+{
+screen_reader_speak(srd, tipo_normal);
+clipboard_copy_text("");
+normal=true;
+}
+if(string_contains(cartas, "Lucha \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Lucha", 1)>0 || string_contains(cartas, ", \"Lucha", 1)>0)
+{
+screen_reader_speak(srd, tipo_lucha);
+clipboard_copy_text("");
+lucha=true;
+}
+if(string_contains(cartas, "Volador \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Volador", 1)>0 || string_contains(cartas, ", \"Volador", 1)>0)
+{
+screen_reader_speak(srd, tipo_volador);
+clipboard_copy_text("");
+volador=true;
+}
+if(string_contains(cartas, "Veneno \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Veneno", 1)>0 || string_contains(cartas, ", \"Veneno", 1)>0)
+{
+screen_reader_speak(srd, tipo_veneno);
+clipboard_copy_text("");
+veneno=true;
+}
+if(string_contains(cartas, "Tierra \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Tierra", 1)>0 || string_contains(cartas, ", \"Tierra", 1)>0)
+{
+screen_reader_speak(srd, tipo_tierra);
+clipboard_copy_text("");
+tierra=true;
+}
+if(string_contains(cartas, "Roca \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Roca", 1)>0 || string_contains(cartas, ", \"Roca", 1)>0)
+{
+screen_reader_speak(srd, tipo_roca);
+clipboard_copy_text("");
+roca=true;
+}
+if(string_contains(cartas, "Bicho \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Bicho", 1)>0 || string_contains(cartas, ", \"Bicho", 1)>0)
+{
+screen_reader_speak(srd, tipo_bicho);
+clipboard_copy_text("");
+bicho=true;
+}
+if(string_contains(cartas, "Fantasma \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Fantasma", 1)>0 || string_contains(cartas, ", \"Fantasma", 1)>0)
+{
+screen_reader_speak(srd, tipo_fantasma);
+clipboard_copy_text("");
+fantasma=true;
+}
+if(string_contains(cartas, "Acero \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Acero", 1)>0 || string_contains(cartas, ", \"Acero", 1)>0)
+{
+screen_reader_speak(srd, tipo_acero);
+clipboard_copy_text("");
+acero=true;
+}
+if(string_contains(cartas, "Planta \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Planta", 1)>0 || string_contains(cartas, ", \"Planta", 1)>0)
+{
+screen_reader_speak(srd, tipo_planta);
+clipboard_copy_text("");
+planta=true;
+}
+if(string_contains(cartas, "Fuego \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Fuego", 1)>0 || string_contains(cartas, ", \"Fuego", 1)>0)
+{
+screen_reader_speak(srd, tipo_fuego);
+clipboard_copy_text("");
+fuego=true;
+}
+if(string_contains(cartas, "Agua \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Agua", 1)>0 || string_contains(cartas, ", \"Agua", 1)>0)
+{
+screen_reader_speak(srd, tipo_agua);
+clipboard_copy_text("");
+agua=true;
+}
+if(string_contains(cartas, "El"+e_acento+"ctrico \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"El"+e_acento+"ctrico", 1)>0 || string_contains(cartas, ", \"El"+e_acento+"ctrico", 1)>0)
+{
+screen_reader_speak(srd, tipo_electrico);
+clipboard_copy_text("");
+electrico=true;
+}
+if(string_contains(cartas, "Ps"+i_acento+"quico \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Ps"+i_acento+"quico", 1)>0 || string_contains(cartas, ", \"Ps"+i_acento+"quico", 1)>0)
+{
+screen_reader_speak(srd, tipo_psiquico);
+clipboard_copy_text("");
+psiquico=true;
+}
+if(string_contains(cartas, "Hielo \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Hielo", 1)>0 || string_contains(cartas, ", \"Hielo", 1)>0)
+{
+screen_reader_speak(srd, tipo_hielo);
+clipboard_copy_text("");
+hielo=true;
+}
+if(string_contains(cartas, "Drag"+o_acento+"n \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Drag"+o_acento+"n", 1)>0 || string_contains(cartas, ", \"Drag"+o_acento+"n", 1)>0)
+{
+screen_reader_speak(srd, tipo_dragon);
+clipboard_copy_text("");
+dragon=true;
+}
+if(string_contains(cartas, "Siniestro \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Siniestro", 1)>0 || string_contains(cartas, ", \"Siniestro", 1)>0)
+{
+screen_reader_speak(srd, tipo_siniestro);
+clipboard_copy_text("");
+siniestro=true;
+}
+if(string_contains(cartas, "Hada \"\", con ", 1)>0 || string_contains(cartas, "tipo actual es \"Hada", 1)>0 || string_contains(cartas, ", \"Hada", 1)>0)
+{
+screen_reader_speak(srd, tipo_hada);
+clipboard_copy_text("");
+hada=true;
+}
+}
+if(string_contains(cartas, "Tambi"+e_acento+"n tienes", 1)>0)
+{
+screen_reader_speak(srd, "Tipos secundarios.");
+if(string_contains(cartas, "Normal", 1)>0)
+{
+if(normal==false)
+{
+screen_reader_speak(srd, tipo_normal);
+clipboard_copy_text("");
+}
+else
+{
+normal=false;
+}
+}
+if(string_contains(cartas, "Lucha", 1)>0)
+{
+if(lucha==false)
+{
+screen_reader_speak(srd, tipo_lucha);
+clipboard_copy_text("");
+}
+else
+{
+lucha=false;
+}
+}
+if(string_contains(cartas, "Volador", 1)>0)
+{
+if(volador==false)
+{
+screen_reader_speak(srd, tipo_volador);
+clipboard_copy_text("");
+}
+else
+{
+volador=false;
+}
+}
+if(string_contains(cartas, "Veneno", 1)>0)
+{
+if(veneno==false)
+{
+screen_reader_speak(srd, tipo_veneno);
+clipboard_copy_text("");
+}
+else
+{
+veneno=false;
+}
+}
+if(string_contains(cartas, "Tierra", 1)>0)
+{
+if(tierra==false)
+{
+screen_reader_speak(srd, tipo_tierra);
+clipboard_copy_text("");
+}
+else
+{
+tierra=false;
+}
+}
+if(string_contains(cartas, "Roca", 1)>0)
+{
+if(roca==false)
+{
+screen_reader_speak(srd, tipo_roca);
+clipboard_copy_text("");
+}
+else
+{
+roca=false;
+}
+}
+if(string_contains(cartas, "Bicho", 1)>0)
+{
+if(bicho==false)
+{
+screen_reader_speak(srd, tipo_bicho);
+clipboard_copy_text("");
+}
+else
+{
+bicho=false;
+}
+}
+if(string_contains(cartas, "Fantasma", 1)>0)
+{
+if(fantasma==false)
+{
+screen_reader_speak(srd, tipo_fantasma);
+clipboard_copy_text("");
+}
+else
+{
+fantasma=false;
+}
+}
+if(string_contains(cartas, "Acero", 1)>0)
+{
+if(acero==false)
+{
+screen_reader_speak(srd, tipo_acero);
+clipboard_copy_text("");
+}
+else
+{
+acero=false;
+}
+}
+if(string_contains(cartas, "Planta", 1)>0)
+{
+if(planta==false)
+{
+screen_reader_speak(srd, tipo_planta);
+clipboard_copy_text("");
+}
+else
+{
+planta=false;
+}
+}
+if(string_contains(cartas, "Fuego", 1)>0)
+{
+if(fuego==false)
+{
+screen_reader_speak(srd, tipo_fuego);
+clipboard_copy_text("");
+}
+else
+{
+fuego=false;
+}
+}
+if(string_contains(cartas, "Agua", 1)>0)
+{
+if(agua==false)
+{
+screen_reader_speak(srd, tipo_agua);
+clipboard_copy_text("");
+}
+else
+{
+agua=false;
+}
+}
+if(string_contains(cartas, "El"+e_acento+"ctrico", 1)>0)
+{
+if(electrico==false)
+{
+screen_reader_speak(srd, tipo_electrico);
+clipboard_copy_text("");
+}
+else
+{
+electrico=false;
+}
+}
+if(string_contains(cartas, "Ps"+i_acento+"quico", 1)>0)
+{
+if(psiquico==false)
+{
+screen_reader_speak(srd, tipo_psiquico);
+clipboard_copy_text("");
+}
+else
+{
+psiquico=false;
+}
+}
+if(string_contains(cartas, "Hielo", 1)>0)
+{
+if(hielo==false)
+{
+screen_reader_speak(srd, tipo_hielo);
+clipboard_copy_text("");
+}
+else
+{
+hielo=false;
+}
+}
+if(string_contains(cartas, "Drag"+o_acento+"n", 1)>0)
+{
+if(dragon==false)
+{
+screen_reader_speak(srd, tipo_dragon);
+clipboard_copy_text("");
+}
+else
+{
+dragon=false;
+}
+}
+if(string_contains(cartas, "Siniestro", 1)>0)
+{
+if(siniestro==false)
+{
+screen_reader_speak(srd, tipo_siniestro);
+clipboard_copy_text("");
+}
+else
+{
+siniestro=false;
+}
+}
+if(string_contains(cartas, "Hada", 1)>0)
+{
+if(hada==false)
+{
+screen_reader_speak(srd, tipo_hada);
+clipboard_copy_text("");
+}
+else
+{
+hada=false;
+}
+}
+}
+if(string_contains(cartas, ", \"", 1)>0)
+{
+screen_reader_speak(srd, "Tipo del usuario.");
+if(string_contains(cartas, "Normal", 1)>0)
+{
+screen_reader_speak(srd, tipo_normal);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Lucha", 1)>0)
+{
+screen_reader_speak(srd, tipo_lucha);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Volador", 1)>0)
+{
+screen_reader_speak(srd, tipo_volador);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Veneno", 1)>0)
+{
+screen_reader_speak(srd, tipo_veneno);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Tierra", 1)>0)
+{
+screen_reader_speak(srd, tipo_tierra);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Roca", 1)>0)
+{
+screen_reader_speak(srd, tipo_roca);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Bicho", 1)>0)
+{
+screen_reader_speak(srd, tipo_bicho);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Fantasma", 1)>0)
+{
+screen_reader_speak(srd, tipo_fantasma);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Acero", 1)>0)
+{
+screen_reader_speak(srd, tipo_acero);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Planta", 1)>0)
+{
+screen_reader_speak(srd, tipo_planta);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Fuego", 1)>0)
+{
+screen_reader_speak(srd, tipo_fuego);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Agua", 1)>0)
+{
+screen_reader_speak(srd, tipo_agua);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "El"+e_acento+"ctrico", 1)>0)
+{
+screen_reader_speak(srd, tipo_electrico);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Ps"+i_acento+"quico", 1)>0)
+{
+screen_reader_speak(srd, tipo_psiquico);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Hielo", 1)>0)
+{
+screen_reader_speak(srd, tipo_hielo);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Drag"+o_acento+"n", 1)>0)
+{
+screen_reader_speak(srd, tipo_dragon);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Siniestro", 1)>0)
+{
+screen_reader_speak(srd, tipo_siniestro);
+clipboard_copy_text("");
+}
+if(string_contains(cartas, "Hada", 1)>0)
+{
+screen_reader_speak(srd, tipo_hada);
+clipboard_copy_text("");
+}
+else
+{
+clipboard_copy_text("");
+}
+}
+wait(10);
+}
+}

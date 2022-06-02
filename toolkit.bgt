@@ -1,0 +1,63 @@
+#include"calc.bgt"
+#include"contador.bgt"
+#include"batalla.bgt"
+#include"reader.bgt"
+const string programa="Crazy Party Toolkit";
+reader rd;
+const string i_acento=ascii_to_character(237);
+const string a_acento=ascii_to_character(225);
+const string o_acento=ascii_to_character(243);
+const string exclamacion=ascii_to_character(161);
+const string e_acento=ascii_to_character(233);
+const string u_acento=ascii_to_character(250);
+const double version=1.6;
+uint8 srd;
+uint modo=0;
+const string instrucciones_rapidas="Presiona C para acceder al modo calculadora, T para acceder al modo temporizador, B para acceder al modo tabla de efectividad de batalla, W para leer los cr"+e_acento+"ditos y H si deseas repetir las instrucciones de esta ayuda. Puedes presionar alt F4 para cerrar la herramienta en cualquier momento, o escape para regresar a esta pantalla desde cualquier sub-herramienta. Tambi"+e_acento+"n puedes cerrar la herramienta presionando escape aqu"+i_acento+".";
+const string creditos="Versi"+o_acento+"n "+version+". El Crazy Party Toolkit fue hecho por Ulises Monge. Parte del c"+o_acento+"digo de la calculadora es gracias a Metalalchemist. Gracias a mis amigos el detective, Juli"+a_acento+"n, Samuel, Fernanda, Samantha y Cristal. Tambi"+e_acento+"n gracias a los primeros betatesters de la herramienta, Cristina, Ariel y Miguel. Crazy Party Toolkit no fue hecho con el consentimiento de Pragma, y queda bajo la responsabilidad de cada usuario su uso.";
+void herramienta()
+{
+show_game_window(programa);
+wait(1000);
+screen_reader_speak(srd, exclamacion+"Bienvenido a Crazy Party Toolkit! "+instrucciones_rapidas);
+while(modo==0)
+{
+if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
+{
+exit();
+}
+if(key_pressed(KEY_ESCAPE))
+{
+exit();
+}
+if(key_pressed(KEY_H))
+{
+screen_reader_speak(srd, instrucciones_rapidas);
+}
+if(key_pressed(KEY_W))
+{
+screen_reader_speak(srd, creditos);
+}
+if(key_pressed(KEY_C))
+{
+modo=1;
+calculadora();
+}
+if(key_pressed(KEY_T))
+{
+modo=2;
+temporizador();
+}
+if(key_pressed(KEY_B))
+{
+modo=3;
+tipos_de_batalla();
+}
+wait(10);
+}
+}
+void main()
+{
+srd=rd.init();
+herramienta();
+}

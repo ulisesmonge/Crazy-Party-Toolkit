@@ -1,0 +1,130 @@
+bool contar=false, pausado=false;
+string contador;
+uint tiempos_creados=0, tiempos_iniciados=0, tiempo_total=0, contador2=0, contador3=0, contador4=0, contador6=0, contador7=0, contador8=0;
+sound campana;
+sound iniciar;
+sound sonidocontador;
+timer tiempo;
+void temporizador()
+{
+show_game_window("Temporizador - "+programa+" ");
+campana.load("alert.ogg");
+iniciar.load("start.ogg");
+sonidocontador.load("sonidocontador.ogg");
+tiempo.pause();
+while(modo==2)
+{
+if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
+{
+exit();
+}
+if(key_pressed(KEY_ESCAPE))
+{
+modo=0;
+herramienta();
+}
+if(key_pressed(KEY_I))
+{
+if(tiempos_creados==0)
+{
+screen_reader_speak(srd, exclamacion+"Ni si quiera has creado un primer temporizador!");
+}
+else
+{
+screen_reader_speak(srd, "Has creado "+tiempos_creados+" temporizadores y has iniciado "+tiempos_iniciados+" temporizadores");
+}
+}
+if(key_pressed(KEY_T))
+{
+contador=input_box("Tiempo a contar", "Escribe el tiempo a contar (En segundos). Ten en cuenta que el temporizador no iniciar"+a_acento+" autom"+a_acento+"ticamente.");
+contador4=string_to_number(contador);
+if(contador4>=1)
+{
+contador2=contador4*1000;
+tiempos_creados++;
+}
+}
+if(key_pressed(KEY_C))
+{
+if(tiempos_creados==0)
+{
+screen_reader_speak(srd, "Esta informaci"+o_acento+"n no está disponible porque no has creado un temporizador");
+}
+else
+{
+contador6=(contador2/1000)-(tiempo.elapsed/1000);
+screen_reader_speak(srd, "Quedan "+contador6+" segundos en el temporizador, y tu contador es de "+contador4+" segundos");
+}
+}
+if(key_pressed(KEY_SPACE))
+{
+if(contador2==0)
+{
+screen_reader_speak(srd, "No hay ninguna cantidad en el temporizador");
+}
+if(contador2>0)
+{
+tiempo.restart();
+iniciar.play();
+tiempos_iniciados++;
+contar=true;
+}
+}
+if(key_pressed(KEY_P))
+{
+if(pausado==false)
+{
+screen_reader_speak(srd, "No hay un temporizador para reanudar");
+}
+if(pausado==true)
+{
+tiempo.resume();
+screen_reader_speak(srd, "Temporizador reanudado");
+pausado=false;
+contar=true;
+}
+}
+while(contar==true)
+{
+if(key_pressed(KEY_ESCAPE))
+{
+tiempo.force(0000);
+tiempo.pause();
+contar=false;
+}
+if(key_pressed(KEY_P))
+{
+tiempo.pause();
+screen_reader_speak(srd, "Temporizador pausado");
+pausado=true;
+contar=false;
+}
+if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
+{
+exit();
+}
+if(key_pressed(KEY_C))
+{
+contador6=(contador2/1000)-(tiempo.elapsed/1000);
+screen_reader_speak(srd, "Quedan "+contador6+" segundos en el temporizador, y tu contador es de "+contador4+" segundos");
+}
+if(tiempo.elapsed>contador2)
+{
+tiempo.pause();
+campana.play();
+tiempo.force(0000);
+tiempo.pause();
+contar=false;
+sonidocontador.stop();
+}
+if(tiempo.elapsed>=1)
+{
+contador7=contador2-(tiempo.elapsed);
+if(contador7<=3000)
+{
+sonidocontador.play();
+}}
+}
+wait(10);
+}
+}

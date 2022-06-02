@@ -1,0 +1,118 @@
+int numero1, numero2, numero3, tamano, operaciones=0, sumas=0, restas=0, multiplicaciones=0, diviciones=0, raizes=0;
+string cadena1, cadena2, cadena_completa;
+void calculadora()
+{
+show_game_window("Calculadora - "+programa+" ");
+while(modo==1)
+{
+if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
+{
+exit();
+}
+if(key_pressed(KEY_ESCAPE))
+{
+modo=0;
+herramienta();
+}
+if(key_pressed(KEY_C))
+{
+if(operaciones==0)
+{
+screen_reader_speak(srd, exclamacion+"Haz una operaci"+o_acento+"n primero!");
+}
+else
+{
+screen_reader_speak(srd, "Has hecho "+sumas+" sumas, "+restas+" restas, "+multiplicaciones+" multiplicaciones, "+diviciones+" divisiones y "+raizes+" ra"+i_acento+"zes. En total, hiciste "+operaciones+" operaciones.");
+}
+}
+cadena_completa=clipboard_read_text();
+if(string_contains(cadena_completa, " por ", 1)>0)
+{
+multiplicacion(cadena_completa);
+wait(5);
+}
+if(string_contains(cadena_completa, " m"+a_acento+"s ", 1)>0)
+{
+suma(cadena_completa);
+wait(5);
+}
+if(string_contains(cadena_completa, " dividido ", 1)>0)
+{
+divicion(cadena_completa);
+wait(5);
+}
+if(string_contains(cadena_completa, " menos ", 1)>0)
+{
+resta(cadena_completa);
+wait(5);
+}
+if(string_contains(cadena_completa, "cuadrada", 1)>0)
+{
+raiz(cadena_completa);
+wait(5);
+}
+wait(10);
+}
+}
+void multiplicacion(string cadena_completa)
+{
+tamano=string_contains(cadena_completa, " por ", 1);
+cadena1=string_left(cadena_completa, tamano);
+numero1=string_to_number(cadena1);
+cadena2=string_mid(cadena_completa, cadena1.length()+5, cadena_completa.length());
+numero2=string_to_number(cadena2);
+numero3=numero1*numero2;
+screen_reader_speak(srd, numero3);
+clipboard_copy_text(numero1+"*"+numero2+"="+numero3);
+multiplicaciones++;
+operaciones++;
+}
+void divicion(string cadena_completa)
+{
+tamano=string_contains(cadena_completa, " dividido ", 1);
+cadena1=string_left(cadena_completa, tamano);
+numero1=string_to_number(cadena1);
+cadena2=string_mid(cadena_completa, cadena1.length()+10, cadena_completa.length());
+numero2=string_to_number(cadena2);
+numero3=numero1/numero2;
+screen_reader_speak(srd, numero3);
+clipboard_copy_text(numero1+"/"+numero2+"="+numero3);
+diviciones++;
+operaciones++;
+}
+void resta(string cadena_completa)
+{
+tamano=string_contains(cadena_completa, " menos ", 1);
+cadena1=string_left(cadena_completa, tamano);
+numero1=string_to_number(cadena1);
+cadena2=string_mid(cadena_completa, cadena1.length()+7, cadena_completa.length());
+numero2=string_to_number(cadena2);
+numero3=numero1-numero2;
+screen_reader_speak(srd, numero3);
+clipboard_copy_text(numero1+"-"+numero2+"="+numero3);
+restas++;
+operaciones++;
+}
+void suma(string cadena_completa)
+{
+tamano=string_contains(cadena_completa, " m"+a_acento+"s ", 1);
+cadena1=string_left(cadena_completa, tamano);
+numero1=string_to_number(cadena1);
+cadena2=string_mid(cadena_completa, cadena1.length()+5, cadena_completa.length());
+numero2=string_to_number(cadena2);
+numero3=numero1+numero2;
+screen_reader_speak(srd, numero3);
+clipboard_copy_text(numero1+"+"+numero2+"="+numero3);
+sumas++;
+operaciones++;
+}
+void raiz(string cadena_completa)
+{
+cadena1=string_mid(cadena_completa, 17, cadena_completa.length());
+numero1=string_to_number(cadena1);
+numero2=square_root(numero1);
+screen_reader_speak(srd, numero2);
+clipboard_copy_text("La ra"+i_acento+"z de "+numero1+" es "+numero2);
+raizes++;
+operaciones++;
+}
