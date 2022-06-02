@@ -10,10 +10,10 @@ const string o_acento=ascii_to_character(243);
 const string exclamacion=ascii_to_character(161);
 const string e_acento=ascii_to_character(233);
 const string u_acento=ascii_to_character(250);
-const string version="1.6.1";
+const string version="1.6.2";
 uint8 srd;
 uint modo=0;
-const string instrucciones_rapidas="Presiona C para acceder al modo calculadora, T para acceder al modo temporizador, B para acceder al modo tabla de efectividad de batalla, W para leer los cr"+e_acento+"ditos y H si deseas repetir las instrucciones de esta ayuda. Puedes presionar alt F4 para cerrar la herramienta en cualquier momento, o escape para regresar a esta pantalla desde cualquier sub-herramienta. Tambi"+e_acento+"n puedes cerrar la herramienta presionando escape aqu"+i_acento+".";
+const string instrucciones_rapidas="Presiona C para acceder al modo calculadora, T para acceder al modo temporizador, B para acceder al modo tabla de efectividad de batalla, R para copiar la URL del repositorio en Git, G para copiar la URL del juego, D para copiar la URL del PayPal de donaciones, W para leer los cr"+e_acento+"ditos y H si deseas repetir las instrucciones de esta ayuda. Puedes presionar alt F4 para cerrar la herramienta en cualquier momento, o escape para regresar a esta pantalla desde cualquier sub-herramienta. Tambi"+e_acento+"n puedes cerrar la herramienta presionando escape aqu"+i_acento+".";
 const string creditos="Versi"+o_acento+"n "+version+". El Crazy Party Toolkit fue hecho por Ulises Monge. Parte del c"+o_acento+"digo de la calculadora es gracias a Metalalchemist. El script para detectar lector de pantalla fue obtenido de forma gratuita de una librer"+i_acento+"a. Gracias a mis amigos el detective, Juli"+a_acento+"n, Samuel, Fernanda, Samantha y Cristal. Tambi"+e_acento+"n gracias a los primeros betatesters de la herramienta, Cristina, Ariel y Miguel. Crazy Party Toolkit no fue hecho con el consentimiento de Pragma, y queda bajo la responsabilidad de cada usuario su uso.";
 void herramienta()
 {
@@ -37,6 +37,21 @@ screen_reader_speak(srd, instrucciones_rapidas);
 if(key_pressed(KEY_W))
 {
 screen_reader_speak(srd, creditos);
+}
+if(key_pressed(KEY_R))
+{
+clipboard_copy_text("https://github.com/ulisesmonge/Crazy-Party-Toolkit");
+screen_reader_speak(srd, "Direcci"+o_acento+"n URL del repositorio copiada al portapapeles.");
+}
+if(key_pressed(KEY_G))
+{
+clipboard_copy_text("http://pragmapragma.free.fr/crazy-party/");
+screen_reader_speak(srd, "Direcci"+o_acento+"n URL del juego copiada al portapapeles.");
+}
+if(key_pressed(KEY_D))
+{
+clipboard_copy_text("https://paypal.me/ulisesmonge");
+screen_reader_speak(srd, "Direcci"+o_acento+"n URL de donaciones copiada al portapapeles.");
 }
 if(key_pressed(KEY_C))
 {
