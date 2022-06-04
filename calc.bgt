@@ -1,4 +1,4 @@
-int numero1, numero2, numero3, tamano, operaciones=0, sumas=0, restas=0, multiplicaciones=0, diviciones=0, raizes=0;
+int numero1, numero2, numero3, tamano, operaciones=0, sumas=0, restas=0, multiplicaciones=0, divisiones=0, raizes=0;
 string cadena1, cadena2, cadena_completa;
 void calculadora()
 {
@@ -22,7 +22,7 @@ screen_reader_speak(srd, exclamacion+"Haz una operaci"+o_acento+"n primero!");
 }
 else
 {
-screen_reader_speak(srd, "Has hecho "+sumas+" sumas, "+restas+" restas, "+multiplicaciones+" multiplicaciones, "+diviciones+" divisiones y "+raizes+" ra"+i_acento+"zes. En total, hiciste "+operaciones+" operaciones.");
+screen_reader_speak(srd, "Has hecho "+sumas+" sumas, "+restas+" restas, "+multiplicaciones+" multiplicaciones, "+divisiones+" divisiones y "+raizes+" ra"+i_acento+"zes. En total, hiciste "+operaciones+" operaciones.");
 }
 }
 cadena_completa=clipboard_read_text();
@@ -38,7 +38,7 @@ wait(5);
 }
 if(string_contains(cadena_completa, " dividido ", 1)>0)
 {
-divicion(cadena_completa);
+division(cadena_completa);
 wait(5);
 }
 if(string_contains(cadena_completa, " menos ", 1)>0)
@@ -67,7 +67,7 @@ clipboard_copy_text(numero1+"*"+numero2+"="+numero3);
 multiplicaciones++;
 operaciones++;
 }
-void divicion(string cadena_completa)
+void division(string cadena_completa)
 {
 tamano=string_contains(cadena_completa, " dividido ", 1);
 cadena1=string_left(cadena_completa, tamano);
@@ -77,7 +77,7 @@ numero2=string_to_number(cadena2);
 numero3=numero1/numero2;
 screen_reader_speak(srd, numero3);
 clipboard_copy_text(numero1+"/"+numero2+"="+numero3);
-diviciones++;
+divisiones++;
 operaciones++;
 }
 void resta(string cadena_completa)
