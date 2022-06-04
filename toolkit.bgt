@@ -2,6 +2,9 @@
 #include"contador.bgt"
 #include"batalla.bgt"
 #include"reader.bgt"
+//Inclusión de los scripts a usar.
+//Inclusion of the scripts to use.
+
 const string programa="Crazy Party Toolkit";
 reader rd;
 const string i_acento=ascii_to_character(237);
@@ -15,11 +18,18 @@ uint8 srd;
 uint modo=0;
 const string instrucciones_rapidas="Presiona C para acceder al modo calculadora, T para acceder al modo temporizador, B para acceder al modo tabla de efectividad de batalla, R para copiar la URL del repositorio en Git, G para copiar la URL del juego, D para copiar la URL del PayPal de donaciones, W para leer los cr"+e_acento+"ditos y H si deseas repetir las instrucciones de esta ayuda. Puedes presionar alt F4 para cerrar la herramienta en cualquier momento, o escape para regresar a esta pantalla desde cualquier sub-herramienta. Tambi"+e_acento+"n puedes cerrar la herramienta presionando escape aqu"+i_acento+".";
 const string creditos="Versi"+o_acento+"n "+version+". El Crazy Party Toolkit fue hecho por Ulises Monge. Parte del c"+o_acento+"digo de la calculadora es gracias a Metalalchemist. El script para detectar lector de pantalla fue obtenido de forma gratuita de una librer"+i_acento+"a. Gracias a mis amigos el detective, Juli"+a_acento+"n, Samuel, Fernanda, Samantha y Cristal. Tambi"+e_acento+"n gracias a los primeros betatesters de la herramienta, Cristina, Ariel y Miguel. Crazy Party Toolkit no fue hecho con el consentimiento de Pragma, y queda bajo la responsabilidad de cada usuario su uso.";
+//Declaración de la constantes (cadenas).
+//Declaration of the constants (strings).
+//En la línea inferior, se comienza con la función herramienta.
+//On the bottom line, start with the tool function.
 void herramienta()
 {
+//Damos la bienvenida al usuario con un alert.
+//We welcome the user with an alert.
 show_game_window(programa);
 wait(1000);
 screen_reader_speak(srd, exclamacion+"Bienvenido a Crazy Party Toolkit! "+instrucciones_rapidas);
+//Usamos un WHILE para verificar la variable modo, que la usaremos para mandar a llamar a los diferentes scripts de los demás archivos.
 while(modo==0)
 {
 if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
@@ -73,6 +83,7 @@ wait(10);
 }
 void main()
 {
+//Verificamos que lector de pantallas se esté usando, y llamamos la función para el menú.
 srd=rd.init();
 herramienta();
 }
