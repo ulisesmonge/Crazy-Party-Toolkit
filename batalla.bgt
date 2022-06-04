@@ -16,13 +16,19 @@ const string tipo_hielo="Hielo es s"+u_acento+"per efectivo ante Tierra, Volador
 const string tipo_dragon="Drag"+o_acento+"n es s"+u_acento+"per efectivo ante Drag"+o_acento+"n, poco efectivo a Acero, pr"+a_acento+"cticamente no afecta a Hada, resistente a Planta, Fuego, Agua y El"+e_acento+"ctrico, d"+e_acento+"bil a Hielo, Drag"+o_acento+"n y Hada, pr"+a_acento+"cticamente inmune a Ninguno.";
 const string tipo_siniestro="Siniestro es s"+u_acento+"per efectivo ante Ps"+i_acento+"quico y Fantasma, poco efectivo a Lucha, Siniestro y Hada, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Fantasma y Siniestro, d"+e_acento+"bil a Lucha, Bicho y Hada, pr"+a_acento+"cticamente inmune a Ps"+i_acento+"quico.";
 const string tipo_hada="Hada es s"+u_acento+"per efectivo ante Drag"+o_acento+"n, Lucha y Siniestro, poco efectivo a Fuego, Veneno y Acero, pr"+a_acento+"cticamente no afecta a Ninguno, resistente a Lucha, Bicho y Siniestro, d"+e_acento+"bil a Veneno y Acero, pr"+a_acento+"cticamente inmune a Drag"+o_acento+"n.";
+//Se declaran algunas constantes tipo strings para usar.
+ 
 bool normal=false, lucha=false, volador=false, veneno=false, tierra=false, roca=false, bicho=false, fantasma=false, acero=false, planta=false, fuego=false, agua=false, electrico=false, psiquico=false, hielo=false, dragon=false, siniestro=false, hada=false;
+//Declaramos variables booleanas.
 string cartas;
+//inicializamos la función.
 void tipos_de_batalla()
 {
+//Ponemos el título, e iniciamos el bucle while, para verificar que seguimos en esta opción, o regresamos al menú principal.
 show_game_window("Tabla de efectividad de tipos - "+programa+" ");
 while(modo==3)
 {
+//Verificamos que se pulsen las teclas LTF + f4, o  escape, para salir. Con alt f4 ceramos, y escape regresamos al menú principal, canviando la variable que verifica el while, a 0.
 if(key_down(KEY_LMENU)&&key_pressed(KEY_F4))
 {
 exit();
